@@ -94,5 +94,5 @@ def upload_cv():
     else:
         return jsonify({"error": "Invalid file format. Please upload a PDF file"})
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)
