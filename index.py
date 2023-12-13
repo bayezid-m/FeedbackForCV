@@ -2,8 +2,10 @@ from flask import Flask, request, jsonify
 from spellchecker import SpellChecker
 import re
 import PyPDF2
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 def read_cv(file):
     text = ""
@@ -52,7 +54,8 @@ def generate_feedback(misspelled_words, missing_sections, skills):
     if len(missing_sections) <= 2:
         feedback_dict["positive_feedback"].append("Your CV looks good. Well done!")
     else:
-         feedback_dict["negative_feedback"].append("You should add more field in your CV")
+        feedback_dict["negative_feedback"].append("You should add more field in your CV")
+
     # Career suggestion based on skills
     if skills:
         career_suggestion = suggest_career(skills)
